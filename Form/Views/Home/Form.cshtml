@@ -1,0 +1,23 @@
+﻿@model Form.Models.Data
+
+<form asp-action="Form" method="post">
+    <div>
+        <label asp-for="Name">Your name</label>
+        <input asp-for="Name" />
+    </div>
+    <div>
+        <label asp-for="Email">Your email</label>
+        <input asp-for="Email" />
+    </div>
+    <div>
+        <label asp-for="Topic">Topic</label>
+        <input asp-for="Topic" />
+    </div>
+    <div>
+        <label asp-for="Content">Content</label>
+        <textarea asp-for="Content"></textarea>
+    </div>
+    <div>
+        <input type="submit" />
+    </div>
+</form>
