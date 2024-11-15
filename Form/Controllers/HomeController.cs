@@ -1,6 +1,7 @@
 using Form.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Reflection;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Form.Controllers
@@ -27,8 +28,33 @@ namespace Form.Controllers
         [HttpPost]
         public IActionResult Form(Data data)
         {
-            return View("Result", data);
+            if (ModelState.IsValid)
+            {
+                return View("Result", data);
+            }
+            else return View();
         }
+
+        [HttpGet]
+        public IActionResult VolunteerForm()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult VolunteerForm(VolunteerForm data)
+        {
+            if (ModelState.IsValid)
+            {
+                return View("Success", data);
+            }
+            return View();
+        }
+
+        public IActionResult Success(VolunteerForm data)
+        {
+            return View(data);
+        }
+
         public IActionResult Result(Data data)
         {
             return View(data);

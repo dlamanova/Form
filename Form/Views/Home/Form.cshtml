@@ -1,23 +1,33 @@
 ﻿@model Form.Models.Data
 
 <form asp-action="Form" method="post">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
     <div>
-        <label asp-for="Name">Your name</label>
-        <input asp-for="Name" />
+        @Html.LabelFor(m => m.Name, "Your name")
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
     </div>
+
     <div>
-        <label asp-for="Email">Your email</label>
-        <input asp-for="Email" />
+        @Html.LabelFor(m => m.Email, "Your email")
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
     </div>
+
     <div>
-        <label asp-for="Topic">Topic</label>
-        <input asp-for="Topic" />
+        @Html.LabelFor(m => m.Topic, "Topic")
+        @Html.TextBoxFor(m => m.Topic, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Topic, "", new { @class = "text-danger" })
     </div>
+
     <div>
-        <label asp-for="Content">Content</label>
-        <textarea asp-for="Content"></textarea>
+        @Html.LabelFor(m => m.Content, "Content")
+        @Html.TextAreaFor(m => m.Content, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Content, "", new { @class = "text-danger" })
     </div>
+
     <div>
-        <input type="submit" />
+        <input type="submit" class="btn btn-primary" value="Submit" />
     </div>
 </form>

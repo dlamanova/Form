@@ -1,0 +1,21 @@
+﻿@model Form.Models.VolunteerForm
+
+@{
+    ViewData["Title"] = "Rejestracja zakończona pomyślnie";
+}
+
+<h2>Rejestracja zakończona pomyślnie</h2>
+
+<p>Dziękujemy za rejestrację, @Model.FirstName @Model.LastName!</p>
+<p>Poniżej znajdują się Twoje dane rejestracyjne:</p>
+
+<ul>
+    <li><strong>Imię:</strong> @Model.FirstName</li>
+    <li><strong>Nazwisko:</strong> @Model.LastName</li>
+    <li><strong>Email:</strong> @Model.Email</li>
+    <li><strong>Telefon:</strong> @Model.Phone</li>
+    <li><strong>Wiek:</strong> @Model.Age</li>
+    <li><strong>Miasto:</strong> @Model.City</li>
+</ul>
+
+<a href="/" class="btn btn-primary">Powrót do strony głównej</a>

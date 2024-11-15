@@ -1,0 +1,71 @@
+﻿@model Form.Models.VolunteerForm
+
+@{
+    ViewData["Title"] = "Rejestracja na wolontariat";
+}
+
+<h2>Rejestracja na wolontariat</h2>
+
+@if (ViewBag.SuccessMessage != null)
+{
+    <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+}
+else
+{
+    <form asp-action="VolunteerForm" method="post">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div>
+            @Html.LabelFor(m => m.FirstName)
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+            @Html.LabelFor(m => m.LastName)
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+            @Html.LabelFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+            @Html.LabelFor(m => m.ConfirmPassword)
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+            @Html.LabelFor(m => m.Phone)
+            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", type = "tel" })
+            @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+            @Html.LabelFor(m => m.Age)
+            @Html.TextBoxFor(m => m.Age, new { @class = "form-control", type = "number", min = "11", max = "80" })
+            @Html.ValidationMessageFor(m => m.Age, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+            @Html.LabelFor(m => m.City)
+            @Html.DropDownListFor(m => m.City, Html.GetEnumSelectList<Form.Models.VolunteerForm.Cities>(), "Wybierz miasto", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Zarejestruj</button>
+            <button type="reset" class="btn btn-secondary">Wyczyść</button>
+        </div>
+    </form>
+}
